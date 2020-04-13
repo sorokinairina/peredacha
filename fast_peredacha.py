@@ -162,10 +162,10 @@ for i1,i in enumerate(str1):
         elif i==1 and i1%2==0:
             screen()
             polos_chet_1()
-        elif i==0 and i%2==1:
+        elif i==0 and i1%2==1:
             screen()
             polos_nechet_0()
-        elif i==1 and i%2==1:
+        elif i==1 and i1%2==1:
             screen()
             polos_nechet_1()
 
