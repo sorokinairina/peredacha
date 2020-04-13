@@ -35,8 +35,8 @@ while isRunning:
     for i in range (0,255,100):
         svet(i, i, i)
         fun()
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                isRunning=False
-                pygame.quit()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    isRunning=False
+                    pygame.quit()
