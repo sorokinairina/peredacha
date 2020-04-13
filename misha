@@ -1,0 +1,42 @@
+from PIL import Image, ImageDraw, ImageGrab
+import pygame
+import time
+import os
+img = ImageGrab.grab()
+img.save("screen.jpg", "JPEG")
+img1 = ImageGrab.grab()
+img1.save("screen1.jpg", "JPEG")
+image = Image.open('screen.jpg')
+draw = ImageDraw.Draw(img)  # Создаем инструмент для рисования
+width = img.size[0]  # Определяем ширину
+height = img.size[1]  # Определяем высоту
+pix = img.load()  # Выгружаем значения пикселей
+print(width)
+print(height)
+
+def svet(r,g,b):
+    global img,image
+    image = Image.open('screen.jpg')
+    for x in range(width):
+        for y in range(height):
+            draw.point((x, y), (r, g, b))
+    img.save("screen1.jpg", "JPEG")
+
+def fun():
+    time.sleep(0.5)
+    pygame.display.init()
+    img = pygame.image.load('screen1.jpg')
+    screen = pygame.display.set_mode(img.get_size(), pygame.FULLSCREEN)
+    screen.blit(img, (0, 0))
+    pygame.display.flip()
+
+isRunning = True
+while isRunning:
+    for i in range (0,255,100):
+        svet(i, i, i)
+        fun()
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                isRunning=False
+                pygame.quit()
